@@ -1,3 +1,9 @@
-body {
-    // background-color: aqua;
-}
+/**
+* Base
+*/
+@import './base/_base.scss';
+
+/**
+* Variables
+*/
+@import './variables/_variables.scss';

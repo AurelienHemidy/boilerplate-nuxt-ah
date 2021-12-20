@@ -1,11 +1,17 @@
 <template>
-  
+
   <div>
 
-    <h1 ref="preloader" class="preloader" >{{ preloaderValue }}</h1>
+    <transition name="preloader-anim">
 
-    <nuxt-link to="/about"> About </nuxt-link>
-    
+      <div v-if="loadingActive" class="preloader">
+
+        <div ref="loading" class="loading">0 %</div>
+        
+      </div>
+
+    </transition>
+
   </div>
 
 </template>

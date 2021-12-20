@@ -1,3 +1,38 @@
 .preloader {
-    color: chocolate;
+    position: absolute;
+    
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: rgb(31, 34, 39);
+
+    .loading {
+        position: absolute;
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, -50%);
+
+        color: #fff;
+
+        font-size: 5vw;
+
+        transition: .3s all ease-in-out;
+    }
 }
+
+.preloader-anim-enter-active,
+.preloader-anim-leave-active {
+    transition: all .5s cubic-bezier(1, 0.8, 0.5, 1) 1.5s;
+}
+
+.preloader-anim-enter-from,
+.preloader-anim-leave-to {
+    opacity: 0;
+}
+
+    

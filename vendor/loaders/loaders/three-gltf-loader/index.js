@@ -1,22 +1,22 @@
-// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-// class ThreeGLTFLoader {
-//     constructor(options = {}) {
-//         // super(options);
+class ThreeGLTFLoader {
+    constructor(options = {}) {
+        // super(options);
 
-//         this._gltfLoader = new GLTFLoader();
-//     }
+        this._gltfLoader = new GLTFLoader();
+    }
 
-//     /**
-//      * Public
-//      */
-//     load({ path }) {
-//         const promise = new Promise((resolve, reject) => {
-//             this._gltfLoader.load(path, resolve, null, reject);
-//         });
+    /**
+     * Public
+     */
+    load({ path }) {
+        const promise = new Promise((resolve, reject) => {
+            this._gltfLoader.load(path, resolve, null, reject);
+        });
 
-//         return promise;
-//     }
-// }
+        return promise;
+    }
+}
 
-// export default ThreeGLTFLoader;
+export default ThreeGLTFLoader;

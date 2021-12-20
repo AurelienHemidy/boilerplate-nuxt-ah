@@ -8,27 +8,31 @@ class ResourceLoader extends EventDispatcher {
 
         this._progress = 0;
         this._preloadedResources = 0;
-        this.resources = [];
+        // this.resources = [];
         // this.cache = [];
-        this.loaders = {};
+        
         this._preloadByDefault = false;
 
         this._bindAll();
     }
 
+    static resources = [];
+
     static cache = [];
+
+    static loaders = {};
 
     getRessources() {
         return this.resources;
     }
 
-    getLoaders() {
+    static getLoaders() {
         console.log(this.loaders)
     }
 
     // Permet d'enregistrer un loader pour un type particulier de ressources à loader
-    static registerLoader({ loader, type }) {
-        this.loaders[type] = new loader();
+    static registerLoader({ Loader, type }) {
+        this.loaders[type] = new Loader();
     }
 
     // Permet d'ajouter les ressources à load
@@ -46,16 +50,16 @@ class ResourceLoader extends EventDispatcher {
                 resource.preload = this._preloadByDefault;
             }
 
-            this.resources.push(resource);
+            ResourceLoader.resources.push(resource);
         }
 
-        return this.resources;  
+        return ResourceLoader.resources;  
     }
 
     preload() {
         const promises = [];
 
-        const resourcesToPreload = this.resources.filter((resource) => {
+        const resourcesToPreload = ResourceLoader.resources.filter((resource) => {
             return resource.preload;
         });
 
@@ -63,7 +67,7 @@ class ResourceLoader extends EventDispatcher {
         this._preloadStartHandler(resourcesToPreload);
 
         for (let i = 0; i < resourcesToPreload.length; i++) {
-            const promise = this.loadResource(resourcesToPreload[i]);
+            const promise = ResourceLoader.loadResource(resourcesToPreload[i]);
             promises.push(promise);
             promise.then(this._preloadProgressHandler)
         }
@@ -73,7 +77,7 @@ class ResourceLoader extends EventDispatcher {
             .then(this._preloadCompleteHandler);
     }
 
-    loadResource(resource) {
+    static loadResource(resource) {
         // Si la ressource n'a pas de nom
         if (!resource.name) throw new Error('Resource name should be defined');
 
@@ -133,7 +137,7 @@ class ResourceLoader extends EventDispatcher {
 
     _preloadProgressHandler(resource) {
         this._preloadedResources++;
-        this._progress = this._preloadedResources / this.resources.length;
+        this._progress = Math.round(this._preloadedResources / ResourceLoader.resources.length * 100);
         this.dispatchEvent('progress', this._progress);
         // On dispatch l'event de progress
     }

@@ -1,5 +1,5 @@
 module.exports = {
-  root: true,
+  root: false,
   env: {
     browser: true,
     node: true,
@@ -15,6 +15,7 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     "no-console": "off",
     "vue/require-prop-types": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "new-cap": "off"
   },
 }
