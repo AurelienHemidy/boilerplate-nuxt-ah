@@ -1,5 +1,13 @@
 <template>
-    <h1>Footer</h1>
+
+    <footer class="footer">
+
+        <h1>Footer</h1>
+
+        <div>La footer de mon blog ici</div>
+
+    </footer>
+    
 </template>
 
 <script src="./script.js"></script>

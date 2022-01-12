@@ -1,0 +1,38 @@
+$curved: cubic-bezier(.31,1.01,.55,.92);
+
+.home {
+
+    &__img-transition {
+        position: absolute;
+
+        // transform: translate(100px, -500px);
+
+        transition: 1s cubic-bezier(1,.06,.82,.94);
+
+        width: 200px;
+    }
+
+}
+
+.page-transition-leave-to {
+    // opacity: 0;
+    .home {
+
+        &__text {
+            transition: 1s opacity cubic-bezier(1,.06,.82,.94);
+            opacity: 0;
+        }
+
+        &__img-transition {
+            transition: 1s $curved;
+            transform: translate(650px, -625px) scale(7.5, 1.5);
+        }
+    }
+}
+
+//Temps de transition principale de l'animation de leave 
+//(en gros c'est le temps que va mettre l'autre page à s'afficher) 
+//donc on peut faire les anims qu'on veut pendant ce laps de temps
+.page-transition-leave-active {
+    transition: 1.5s all cubic-bezier(1,.06,.82,.94);
+}

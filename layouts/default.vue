@@ -2,11 +2,13 @@
 
   <div>
 
-    <div class="nav">La barre de navigation de mon blog ici</div>
+    <Header />
 
     <Nuxt />
-    
-    <div>La footer de mon blog ici</div>
+
+    <Preloader />
+
+    <Footer />
 
   </div>
 

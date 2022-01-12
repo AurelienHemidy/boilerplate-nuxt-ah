@@ -1,6 +1,9 @@
 // Vue
 import { ref, onMounted } from '@vue/composition-api';
 
+// VueX Store
+// import { useStore } from 'vuex';
+
 // Gsap
 import { gsap } from 'gsap';
 
@@ -15,6 +18,8 @@ import globalResources from '@/static/datas/globalResources';
 export default {
     name: "Preloader",
     setup() {
+        // const store = useStore();
+
         const loading = ref(null);
 
         const loadingActive = ref(true);
@@ -38,12 +43,18 @@ export default {
         };
 
         const setupEventListeners = () => {
+            resourceLoader.addEventListener('start', loadResourcesStartHandler);
             resourceLoader.addEventListener('complete', loadResourcesCompleteHandler);
             resourceLoader.addEventListener('progress', loadResourcesProgressHandler);
         };
 
+        const loadResourcesStartHandler = (e) => {
+            // store.dispatch('preloader/setLoadingStarted');
+        }
+
         const loadResourcesCompleteHandler = (e) => {
             loadingActive.value = false;
+            // store.dispatch('preloader/setLoadingCompleted');
         }
     
         const loadResourcesProgressHandler = (e) => {

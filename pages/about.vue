@@ -1,13 +1,9 @@
 <template lang="en">
-    <div>
+    <section class="about">
         <h1>About page</h1>
-    </div>
+        <img src="/images/test1.jpg" class="about__img-transition" alt="transition-image">
+    </section>
 </template>
-<script>
-export default {
-    
-}
-</script>
-<style lang="en">
-    
-</style>
+
+<script src="./about/script.js"></script>
+<style src="./about/styles.scss" lang="scss" scoped></style>
